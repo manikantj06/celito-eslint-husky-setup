@@ -3,7 +3,7 @@
 
   "overrides": [
     {
-      "files": ["*.ts", "*.js"],
+      "files": ["*.ts", "*.js", "*.tsx", "*.jsx"],
       "extends": ["airbnb", "airbnb-typescript", "prettier"],
       "parser": "@typescript-eslint/parser",
       "plugins": ["@typescript-eslint", "check-file", "filename-rules"],

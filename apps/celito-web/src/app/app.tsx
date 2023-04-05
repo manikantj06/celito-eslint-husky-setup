@@ -1,14 +1,14 @@
 import styled from "styled-components";
+import { Route, Routes, Link } from "react-router-dom";
+import * as React from "react";
 
 import NxWelcome from "./nx-welcome";
-
-import { Route, Routes, Link } from "react-router-dom";
 
 const StyledApp = styled.div`
   // Your style here
 `;
 
-export function App() {
+function App() {
   return (
     <StyledApp>
       <NxWelcome title="celito.web-client" />

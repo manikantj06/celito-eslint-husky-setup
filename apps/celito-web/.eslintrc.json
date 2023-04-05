@@ -1,0 +1,22 @@
+{
+  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": ["method"],
+            "format": ["camelCase"]
+          },
+          {
+            "selector": ["function", "variable"],
+            "format": ["camelCase", "PascalCase"]
+          }
+        ]
+      }
+    }
+  ]
+}
