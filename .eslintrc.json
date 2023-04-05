@@ -1,35 +1,91 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts", "*.js"],
+      "extends": ["airbnb", "airbnb-typescript", "prettier"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint", "check-file", "filename-rules"],
+      "parserOptions": {
+        "project": "./tsconfig.base.json"
+      },
       "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
+        "no-console": "error",
+        "semi": [2, "always"],
+        "class-methods-use-this": "off",
+        "import/export": "off",
+        "import/no-extraneous-dependencies": 0,
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/naming-convention": [
           "error",
           {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
+            "selector": ["variable", "function", "method"],
+            "format": ["camelCase"]
+          },
+          {
+            "selector": ["variable"],
+            "types": ["function"],
+            "format": ["camelCase"]
+          },
+          {
+            "selector": ["variable"],
+            "types": ["string", "boolean", "number"],
+            "modifiers": ["const"],
+            "format": ["UPPER_CASE", "camelCase"]
+          },
+          {
+            "selector": ["class", "enum", "interface"],
+            "format": ["PascalCase"]
+          },
+          {
+            "selector": ["classProperty", "memberLike"],
+            "modifiers": ["private"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "require"
+          }
+        ],
+
+        "no-underscore-dangle": [
+          "error",
+          { "enforceInMethodNames": false, "allowAfterThis": true }
+        ],
+
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "public-field",
+              "protected-field",
+              "private-field",
+
+              "public-get",
+              "protected-get",
+              "private-get",
+
+              "public-set",
+              "protected-set",
+              "private-set",
+
+              "public-method",
+              "protected-method",
+              "private-method"
             ]
           }
+        ],
+
+        "check-file/folder-naming-convention": [
+          "error",
+          {
+            "apps/*": "KEBAB_CASE"
+          }
+        ],
+
+        "filename-rules/match": [
+          "error",
+          "/^[a-z][a-z-]*[a-z](\\.[a-z][a-z-]*[a-z])*$/"
         ]
       }
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
-      "rules": {}
     }
   ]
 }
