@@ -6,9 +6,6 @@
       "files": ["*.ts", "*.js", "*.tsx", "*.jsx"],
       "extends": ["airbnb", "airbnb-typescript", "prettier"],
       "plugins": ["@typescript-eslint", "check-file", "filename-rules"],
-      "parserOptions": {
-        "project": "./tsconfig.base.json"
-      },
       "rules": {
         "no-console": "error",
         "semi": [2, "always"],
